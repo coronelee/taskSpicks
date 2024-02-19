@@ -6,6 +6,10 @@ export default {
       backgroundImage: {
         search: "url('/search.svg')"
       },
+      backgroundColor: {
+        primary: '#212125'
+      },
+
       keyframes: {
         openMenu: {
           '0%': { height: '0px' },

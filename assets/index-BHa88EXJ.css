@@ -609,7 +609,7 @@ html {
   background-color: rgb(132 213 44 / var(--tw-bg-opacity));
 }
 
-.checked:bg-[url('check.svg')]:checked {
+.checked\:bg-\[url\(\'\check\.svg\'\)\]:checked {
   background-image: url("check.svg");
 }
 .hover\:bg-\[\#2e9b2e\]:hover {

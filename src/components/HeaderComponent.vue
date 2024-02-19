@@ -4,10 +4,10 @@ import Sliders from './SlidersComponent.vue'
 const isChecked = ref([false, false, false, false])
 const checked = (event) => {
   if (!isChecked[event.target.id]) {
-    document.getElementById(event.target.id).classList.add('bg-[#212125]')
+    document.getElementById(event.target.id).classList.add('bg-[#212126]')
     isChecked[event.target.id] = true
   } else {
-    document.getElementById(event.target.id).classList.remove('bg-[#212125]')
+    document.getElementById(event.target.id).classList.remove('bg-[#212126]')
     isChecked[event.target.id] = false
   }
 }
@@ -19,7 +19,7 @@ const checked = (event) => {
       <h1 class="text-3xl text-white font-bold text-center">Marketplace</h1>
       <input
         type="text"
-        class="outline-none h-[48px] bg-transparent text-[#959595] border border-[#959595] rounded-xl py-2 pl-12 pr-2 w-[300px] bg-search bg-no-repeat bg-left bg-[16px] bg-[length:20px_20px]"
+        class="outline-none h-[48px] bg-transparent text-[#959595] border border-[#959595] rounded-xl py-2 pl-12 pr-2 w-[300px] bg-search bg-no-repeat bg-left bg-[15px] bg-[length:20px_20px]"
         placeholder="Search for a product, flower, etc"
       />
 

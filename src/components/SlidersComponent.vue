@@ -11,22 +11,21 @@ export default {
     min: 234,
     max: 9999,
     tooltips: false,
-    random: ref(this.getRandSearch(2)),
-    selectedItems: []
+    random: ref(Math.floor(Math.random() * 111)),
+    selectedItems: [],
+    showSort: ref(false)
   }),
   methods: {
     setSelectedItems(itemSelect) {
       if (this.selectedItems.includes(itemSelect)) {
         this.selectedItems.splice(this.selectedItems.indexOf(itemSelect), 1)
-        this.random = 213
+        this.random = Math.floor(Math.random() * this.selectedItems.length * 500)
       } else {
         this.selectedItems.push(itemSelect)
+        this.random = Math.floor(Math.random() * this.selectedItems.length * 500)
       }
     },
-    getRandSearch(q) {
-      let number = Math.floor(Math.random() * this.selectedItems.length)
-      return number
-    },
+
     setFirstValue() {
       this.value[0] = document.getElementById('sliderDown').value
     },
@@ -41,7 +40,7 @@ export default {
 }
 </script>
 <template>
-  <div class="flex gap-x-[30px]">
+  <div class="flex gap-x-12 gap-y-2 relative flex-wrap">
     <div class="flex flex-col justify-center items-center gap-y-2 w-[225px] h-[100px]">
       <div class="w-[225px]">
         <h1 class="text-white text-1xl font-bold mb-4">Price Range</h1>
@@ -87,14 +86,66 @@ export default {
         </div>
       </div>
     </div>
+
+    <div
+      class="border border-[#84D52C5C] w-[48px] h-[48px] bg-[#353542] absolute right-0 rounded-[10px] flex justify-center items-center"
+    >
+      <img src="/Filter.svg" class="z-10 cursor-pointer" @click="this.showSort = !this.showSort" />
+      <div
+        class="absolute w-[220px] h-auto p-4 bg-[#212129] top-[50px] right-0 rounded-[10px] shadow-2xl flex flex-col gap-y-2 text-white"
+        v-if="this.showSort"
+      >
+        <span>Sort By: </span>
+        <span class="flex gap-2"
+          ><img src="/sort/Calendar.svg" alt="" class="w-[20px] h-[20px]" /><span>
+            Date (New first)</span
+          ></span
+        >
+        <span class="flex gap-2"
+          ><img src="/sort/Calendar.svg" alt="" class="w-[20px] h-[20px]" /><span
+            >Date (Old first)</span
+          ></span
+        >
+        <span class="flex gap-2"
+          ><img src="/sort/Vector.svg" alt="" class="w-[20px] h-[20px]" /><span
+            >Price (High first)</span
+          ></span
+        >
+        <span class="flex gap-2"
+          ><img src="/sort/Vector1.svg" alt="" class="w-[20px] h-[20px]" /><span
+            >Price (Low first)</span
+          ></span
+        >
+        <span class="flex gap-2"
+          ><img src="/sort/THC.svg  " alt="" class="w-[20px] h-[20px]" /><span
+            >Total THC (High first)</span
+          ></span
+        >
+        <span class="flex gap-2"
+          ><img src="/sort/THC.svg" alt="" class="w-[20px] h-[20px]" /><span
+            >Total THC (Low first)</span
+          ></span
+        >
+        <span class="flex gap-2"
+          ><img src="/sort/CBD.svg" alt="" class="w-[20px] h-[20px]" /><span
+            >Total CBD (High first)</span
+          ></span
+        >
+        <span class="flex gap-2"
+          ><img src="/sort/CBD.svg" alt="" class="w-[20px] h-[20px]" /><span
+            >Total CBD (Low first)</span
+          ></span
+        >
+      </div>
+    </div>
   </div>
-  <div class="w-full flex items-center gap-x-2">
+  <div class="w-full flex items-center flex-wrap gap-x-2">
     <span class="text-white text-1xl font-bold">{{ this.random }} Results</span>
-    <ul id="example-2" class="flex gap-x-2">
+    <ul id="example-2" class="flex flex-wrap gap-2">
       <li
         v-for="(item, index) in selectedItems"
         v-bind:key="index"
-        class="text-white px-2 py-1 bg-[#297019] rounded-[20px] flex gap-2 justify-center items-center cursor-pointer hover:bg-[#2e9b2e] transition-all"
+        class="text-white px-2 py-1 bg-[#297019] rounded-[20px] flex gap-2 h-auto items-center justify-center cursor-pointer hover:bg-[#2e9b2e] transition-all"
       >
         {{ item }}
         <img
